@@ -230,6 +230,14 @@ enum btrfs_read_policy {
 	BTRFS_NR_READ_POLICY,
 };
 
+enum btrfs_read_policy {
+ 	/* Use process PID to choose the stripe */
+ 	BTRFS_READ_POLICY_PID,
+	/* Find and use device with the lowest latency */
+	BTRFS_READ_POLICY_LATENCY,
+ 	BTRFS_NR_READ_POLICY,
+};
+
 struct btrfs_fs_devices {
 	u8 fsid[BTRFS_FSID_SIZE]; /* FS specific uuid */
 	u8 metadata_uuid[BTRFS_FSID_SIZE];
