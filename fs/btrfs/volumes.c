@@ -5881,8 +5881,8 @@ static int btrfs_find_best_stripe(struct btrfs_fs_info *fs_info,
 		unsigned long read_ios;
 		struct btrfs_device *device = map->stripes[index].dev;
 
-		read_wait = part_stat_read(device->bdev, nsecs[READ]);
-		read_ios = part_stat_read(device->bdev, ios[READ]);
+		read_wait = part_stat_read(device->bdev->bd_part, nsecs[READ]);
+		read_ios = part_stat_read(device->bdev->bd_part, ios[READ]);
 
 		if (read_wait && read_ios && read_wait >= read_ios)
 			avg_wait = div_u64(read_wait, read_ios);
