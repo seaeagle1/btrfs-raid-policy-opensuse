@@ -16,7 +16,7 @@
 #include <linux/list_sort.h>
 //replace genhd with #include <linux/part_stat.h> on newer kernels
 #include <linux/genhd.h>
-#include "misc.h"
+//add #include "misc.h" on newer kernels
 #include "ctree.h"
 #include "extent_map.h"
 #include "disk-io.h"
