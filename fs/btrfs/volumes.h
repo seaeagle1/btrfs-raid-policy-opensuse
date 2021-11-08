@@ -236,7 +236,9 @@ enum btrfs_read_policy {
  	BTRFS_READ_POLICY_PID,
 	/* Find and use device with the lowest latency */
 	BTRFS_READ_POLICY_LATENCY,
- 	BTRFS_NR_READ_POLICY,
+	/* Use the device marked with READ_PREFERRED state */
+	BTRFS_READ_POLICY_DEVICE,
+	BTRFS_NR_READ_POLICY,
 };
 
 struct btrfs_fs_devices {
