@@ -1366,6 +1366,7 @@ static const char *alloc_name(u64 flags)
 	}
 }
 
+
 /*
  * Create a sysfs entry for a space info type at path
  * /sys/fs/btrfs/UUID/allocation/TYPE
@@ -1585,6 +1586,18 @@ int btrfs_sysfs_add_device(struct btrfs_device *device)
 out:
 	memalloc_nofs_restore(nofs_flag);
 	return ret;
+}
+
+void btrfs_sysfs_update_devid(struct btrfs_device* device)
+{
+	char tmp[24];
+
+	snprintf(tmp, sizeof(tmp), "%llu", device->devid);
+
+	if (kobject_rename(&device->devid_kobj, tmp))
+		btrfs_warn(device->fs_devices->fs_info,
+			"sysfs: failed to update devid for %llu",
+			device->devid);
 }
 
 static int btrfs_sysfs_add_fs_devices(struct btrfs_fs_devices *fs_devices)
