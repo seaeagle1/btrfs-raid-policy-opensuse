@@ -226,12 +226,6 @@ enum btrfs_chunk_allocation_policy {
  * on these policies.
  */
 enum btrfs_read_policy {
-	/* Use process PID to choose the stripe */
-	BTRFS_READ_POLICY_PID,
-	BTRFS_NR_READ_POLICY,
-};
-
-enum btrfs_read_policy {
  	/* Use process PID to choose the stripe */
  	BTRFS_READ_POLICY_PID,
 	/* Find and use device with the lowest latency */
