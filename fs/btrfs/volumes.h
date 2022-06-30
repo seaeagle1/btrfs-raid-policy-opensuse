@@ -51,6 +51,7 @@ struct btrfs_io_geometry {
 #define BTRFS_DEV_STATE_REPLACE_TGT	(3)
 #define BTRFS_DEV_STATE_FLUSH_SENT	(4)
 #define BTRFS_DEV_STATE_NO_READA	(5)
+#define BTRFS_DEV_STATE_READ_PREFERRED	(6)
 
 struct btrfs_zoned_device_info;
 
@@ -225,8 +226,12 @@ enum btrfs_chunk_allocation_policy {
  * on these policies.
  */
 enum btrfs_read_policy {
-	/* Use process PID to choose the stripe */
-	BTRFS_READ_POLICY_PID,
+ 	/* Use process PID to choose the stripe */
+ 	BTRFS_READ_POLICY_PID,
+	/* Find and use device with the lowest latency */
+	BTRFS_READ_POLICY_LATENCY,
+	/* Use the device marked with READ_PREFERRED state */
+	BTRFS_READ_POLICY_DEVICE,
 	BTRFS_NR_READ_POLICY,
 };
 
